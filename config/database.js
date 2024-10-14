@@ -1,4 +1,7 @@
 require("ts-node/register");
-const config = require("./database.ts");
+const { development, test, production } = require("./database.ts");
 
-module.exports = config;
+// Log the configurations to ensure they are being loaded
+console.log({ development, test, production });
+
+module.exports = { development, test, production };

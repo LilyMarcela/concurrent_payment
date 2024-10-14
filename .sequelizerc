@@ -1,7 +1,8 @@
 const path = require("path");
+require("ts-node/register"); // This ensures TypeScript files are supported
 
 module.exports = {
-  config: path.resolve("config", "database.js"),
+  config: path.resolve("config", "database.js"), // Points to your JS config wrapper
   "models-path": path.resolve("src", "models"),
   "migrations-path": path.resolve("src", "migrations"),
   "seeders-path": path.resolve("src", "seeders"),
