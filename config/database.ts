@@ -1,8 +1,9 @@
-import { Dialect } from "sequelize";
-import { Sequelize } from "sequelize-typescript";
 import * as dotenv from "dotenv";
 
 dotenv.config();
+import { Sequelize } from "sequelize-typescript";
+
+import { Dialect } from "sequelize";
 
 // Instantiate the Sequelize instance with your environment variables
 export const sequelize = new Sequelize({
