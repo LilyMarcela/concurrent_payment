@@ -17,6 +17,7 @@ interface UserCreationAttributes {
 
 @Table({
   tableName: "users",
+  version: true, // optimistic locking
 })
 export class User extends Model<User, UserCreationAttributes> {
   @PrimaryKey
@@ -35,4 +36,11 @@ export class User extends Model<User, UserCreationAttributes> {
 
   @Column(DataType.STRING)
   role!: string;
+
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+    defaultValue: 0, // Default version is 0
+  })
+  version!: number;
 }

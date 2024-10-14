@@ -9,6 +9,7 @@ import {
   BelongsTo,
   CreatedAt,
   UpdatedAt,
+  BeforeCreate,
 } from "sequelize-typescript";
 import { User } from "./user.model"; // Assuming you have a User model
 
@@ -60,4 +61,15 @@ export class Transaction extends Model<
   @UpdatedAt
   @Column(DataType.DATE)
   updatedAt!: Date;
+
+  // Define a custom validation using a hook
+  @BeforeCreate
+  static validateTransaction(transaction: Transaction) {
+    if (transaction.amount <= 0) {
+      throw new Error("Amount must be greater than 0");
+    }
+    if (!["credit", "debit"].includes(transaction.type)) {
+      throw new Error("Transaction type must be either credit or debit");
+    }
+  }
 }
