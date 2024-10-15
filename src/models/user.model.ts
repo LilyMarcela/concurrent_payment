@@ -43,4 +43,11 @@ export class User extends Model<User, UserCreationAttributes> {
     defaultValue: 0, // Default version is 0
   })
   version!: number;
+
+  @Column({
+    type: DataType.FLOAT,
+    allowNull: false,
+    defaultValue: 0,
+  })
+  balance!: number;
 }
